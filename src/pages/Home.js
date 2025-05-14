@@ -4,7 +4,6 @@ import ProjectCard from '../components/ProjectCard';
 import './Home.css';
 
 const Home = () => {
-  // Sample featured projects - replace with your actual projects
   const featuredProjects = [
     {
       id: 'graphic1',

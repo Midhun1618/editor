@@ -1,174 +1,155 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
-import VideoPlayer from '../components/VideoPlayer';
-import './PortfolioPage.css';
-import './VideoEditing.css';
+import './GraphicDesign.css';
 
-const VideoEditing = () => {
-  // Filter categories for video projects
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [featuredVideo, setFeaturedVideo] = useState({
-    id: 'video1',
-    title: 'Commercial: Active Sportswear',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-    description: 'A dynamic commercial for a sportswear brand featuring high-energy transitions and color grading.'
-  });
+const GraphicDesign = () => {
+  const [projects, setProjects] = useState([]);
+  const [filter, setFilter] = useState('all');
+  const [isLoading, setIsLoading] = useState(true);
   
-  // Sample video projects - replace with your actual projects
-  const videoProjects = [
-    {
-      id: 'video1',
-      title: 'Commercial: Active Sportswear',
-      category: 'Commercial',
-      thumbnail: '/images/projects/video1.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'A dynamic commercial for a sportswear brand featuring high-energy transitions and color grading.'
-    },
-    {
-      id: 'video2',
-      title: 'Short Film: Urban Stories',
-      category: 'Film',
-      thumbnail: '/images/projects/video2.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'A narrative short film exploring city life with cinematic editing techniques.'
-    },
-    {
-      id: 'video3',
-      title: 'Corporate Video: Tech Startup',
-      category: 'Corporate',
-      thumbnail: '/images/projects/video3.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'Company overview video with clean transitions and professional tone.'
-    },
-    {
-      id: 'video4',
-      title: 'Music Video: Electronic Artist',
-      category: 'Music',
-      thumbnail: '/images/projects/video4.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'Visually striking music video with effects synchronized to the beat.'
-    },
-    {
-      id: 'video5',
-      title: 'Event Recap: Industry Conference',
-      category: 'Event',
-      thumbnail: '/images/projects/video5.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'Highlight reel showcasing key moments from a major industry event.'
-    },
-    {
-      id: 'video6',
-      title: 'Product Launch: Smart Device',
-      category: 'Commercial',
-      thumbnail: '/images/projects/video6.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'Product launch video with detailed feature demonstrations and motion graphics.'
-    }
+  // Simulated data - in a real app, this would come from an API or CMS
+  useEffect(() => {
+    // Simulate loading delay
+    setTimeout(() => {
+      const projectData = [
+        {
+          id: 'gd1',
+          title: 'Brand Identity System',
+          category: 'branding',
+          thumbnail: '/images/projects/brand-identity-thumb.jpg',
+          description: 'Complete brand identity system including logo, color palette, typography, and usage guidelines.',
+          tags: ['Branding', 'Logo Design', 'Style Guide']
+        },
+        {
+          id: 'gd2',
+          title: 'Marketing Campaign Visuals',
+          category: 'marketing',
+          thumbnail: '/images/projects/marketing-campaign-thumb.jpg',
+          description: 'Series of digital and print assets for a seasonal marketing campaign.',
+          tags: ['Marketing', 'Social Media', 'Print']
+        },
+        {
+          id: 'gd3',
+          title: 'UI Design System',
+          category: 'ui',
+          thumbnail: '/images/projects/ui-design-thumb.jpg',
+          description: 'Comprehensive UI component library and design system for web applications.',
+          tags: ['UI/UX', 'Design System', 'Web']
+        },
+        {
+          id: 'gd4',
+          title: 'Packaging Design',
+          category: 'packaging',
+          thumbnail: '/images/projects/packaging-thumb.jpg',
+          description: 'Product packaging design for a premium food product line.',
+          tags: ['Packaging', 'Print', '3D Mockup']
+        },
+        {
+          id: 'gd5',
+          title: 'Editorial Layout',
+          category: 'print',
+          thumbnail: '/images/projects/editorial-thumb.jpg',
+          description: 'Magazine layout and editorial design for a feature article.',
+          tags: ['Editorial', 'Print', 'Typography']
+        },
+        {
+          id: 'gd6',
+          title: 'Infographic Design',
+          category: 'infographic',
+          thumbnail: '/images/projects/infographic-thumb.jpg',
+          description: 'Data visualization and infographic design for complex information.',
+          tags: ['Infographic', 'Data Viz', 'Information Design']
+        }
+      ];
+      
+      setProjects(projectData);
+      setIsLoading(false);
+    }, 800);
+  }, []);
+  
+  const filteredProjects = filter === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === filter);
+    
+  const categories = [
+    { id: 'all', name: 'All Projects' },
+    { id: 'branding', name: 'Branding' },
+    { id: 'marketing', name: 'Marketing' },
+    { id: 'ui', name: 'UI Design' },
+    { id: 'packaging', name: 'Packaging' },
+    { id: 'print', name: 'Print' },
+    { id: 'infographic', name: 'Infographics' }
   ];
 
-  // Get unique categories for filter buttons
-  const categories = ['all', ...new Set(videoProjects.map(project => project.category.toLowerCase()))];
-
-  // Filter projects based on active filter
-  const filteredProjects = activeFilter === 'all' 
-    ? videoProjects 
-    : videoProjects.filter(project => project.category.toLowerCase() === activeFilter);
-
-  // Handle clicking on a project to set it as featured
-  const handleProjectClick = (project) => {
-    setFeaturedVideo({
-      id: project.id,
-      title: project.title,
-      videoUrl: project.videoUrl,
-      description: project.description
-    });
-    
-    // Scroll to video player
-    document.getElementById('featured-video-section').scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <div className="portfolio-page">
+    <motion.div 
+      className="graphic-design"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="page-header">
-        <div className="container">
-          <h1>Video Editing Portfolio</h1>
-          <p>Visual storytelling through motion, color, and rhythm.</p>
-        </div>
+        <h1>Graphic Design</h1>
+        <p>Exploring visual communication through thoughtful design systems, branding, and creative solutions.</p>
       </div>
-
-      {/* Featured Video Section */}
-      <section id="featured-video-section" className="featured-video-section">
-        <div className="container">
-          <h2 className="section-title">Featured Video</h2>
-          <div className="featured-video-container">
-            <VideoPlayer 
-              videoUrl={featuredVideo.videoUrl} 
-              title={featuredVideo.title}
-            />
-            <div className="video-info">
-              <h3>{featuredVideo.title}</h3>
-              <p>{featuredVideo.description}</p>
-            </div>
-          </div>
+      
+      <div className="filter-container">
+        {categories.map(category => (
+          <button 
+            key={category.id}
+            className={`filter-btn ${filter === category.id ? 'active' : ''}`}
+            onClick={() => setFilter(category.id)}
+          >
+            {category.name}
+          </button>
+        ))}
+      </div>
+      
+      {isLoading ? (
+        <div className="loading-container">
+          <div className="loader"></div>
+          <p>Loading projects...</p>
         </div>
-      </section>
-
-      <div className="container">
-        {/* Portfolio Filters */}
-        <div className="portfolio-filters">
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
-              onClick={() => setActiveFilter(category)}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          ))}
-        </div>
-
-        {/* Portfolio Grid */}
-        <div className="portfolio-grid">
+      ) : (
+        <div className="projects-grid">
           {filteredProjects.map(project => (
-            <div key={project.id} onClick={() => handleProjectClick(project)}>
-              <ProjectCard project={project} />
-            </div>
+            <ProjectCard 
+              key={project.id}
+              id={project.id}
+              title={project.title}
+              thumbnail={project.thumbnail}
+              description={project.description}
+              tags={project.tags}
+              category="graphic-design"
+            />
           ))}
         </div>
-      </div>
-
-      {/* Services Section */}
-      <section className="services-offered">
-        <div className="container">
-          <h2 className="section-title">Video Editing Services</h2>
-          <div className="services-list">
-            <div className="service-item">
-              <h3>Commercial Editing</h3>
-              <p>Promotional videos, advertisements, and product showcases with precise timing and engaging rhythm.</p>
-            </div>
-            <div className="service-item">
-              <h3>Motion Graphics</h3>
-              <p>Animated text, logos, and visual elements that enhance your video content and brand messaging.</p>
-            </div>
-            <div className="service-item">
-              <h3>Color Grading</h3>
-              <p>Professional color correction and stylistic grading to achieve the perfect mood and visual consistency.</p>
-            </div>
-            <div className="service-item">
-              <h3>Post-Production</h3>
-              <p>Sound design, visual effects, transitions, and final optimizations for various platforms.</p>
-            </div>
+      )}
+      
+      <div className="skills-section">
+        <h2>Design Skills & Tools</h2>
+        <div className="skills-grid">
+          <div className="skill-card">
+            <h3>Adobe Creative Suite</h3>
+            <p>Photoshop, Illustrator, InDesign, XD</p>
+          </div>
+          <div className="skill-card">
+            <h3>Digital Design</h3>
+            <p>UI/UX, Social Media, Web Graphics</p>
+          </div>
+          <div className="skill-card">
+            <h3>Print Design</h3>
+            <p>Editorial, Packaging, Marketing Materials</p>
+          </div>
+          <div className="skill-card">
+            <h3>Visual Identity</h3>
+            <p>Logo Design, Brand Guidelines, Style Guides</p>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
-export default VideoEditing;
+export default GraphicDesign;

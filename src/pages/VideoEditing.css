@@ -1,70 +1,270 @@
-/* VideoEditing.css - Specific styles for the video editing portfolio page */
+.video-editing {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-.featured-video-section {
-    padding: 2rem 0 4rem;
-    background-color: var(--secondary-color);
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #5642a6, #2c82aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(86, 66, 166, 0.05);
+  border-color: #5642a6;
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #5642a6, #2c82aa);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(86, 66, 166, 0.2);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.video-project-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.video-project-card:hover {
+  transform: translateY(-5px);
+}
+
+.video-preview-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  color: white;
+  border: none;
+  padding: 2.5rem 1rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  width: 100%;
+}
+
+.video-project-card:hover .video-preview-btn {
+  opacity: 1;
+}
+
+.video-preview-btn i {
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #5642a6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.video-process-section {
+  margin-top: 4rem;
+  padding: 3rem 0;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+
+.video-process-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.process-step {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+  position: absolute;
+  top: -15px;
+  left: 15px;
+  background: linear-gradient(135deg, #5642a6, #2c82aa);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.process-step h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #5642a6;
+}
+
+.process-step p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.skills-section {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.skills-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #5642a6;
+}
+
+.skill-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .video-editing {
+    padding: 1.5rem;
   }
   
-  .featured-video-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
+  .page-header h1 {
+    font-size: 2rem;
   }
   
-  .video-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
   
-  .video-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
+  .process-steps {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 1rem;
   }
   
-  .video-info p {
-    color: #666;
-    line-height: 1.7;
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .filter-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
   }
   
-  .portfolio-grid .project-card {
-    cursor: pointer;
+  .process-steps {
+    grid-template-columns: 1fr;
   }
   
-  /* Video Player Overlay */
-  .project-thumbnail::before {
-    content: "▶";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 77, 90, 0.8);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
+  .skills-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .project-card:hover .project-thumbnail::before {
-    opacity: 1;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 992px) {
-    .featured-video-container {
-      grid-template-columns: 1fr;
-    }
-    
-    .video-info {
-      margin-top: 1rem;
-    }
-  }
+}

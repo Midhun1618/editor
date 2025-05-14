@@ -1,174 +1,213 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
-import VideoPlayer from '../components/VideoPlayer';
-import './PortfolioPage.css';
 import './VideoEditing.css';
 
 const VideoEditing = () => {
-  // Filter categories for video projects
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [featuredVideo, setFeaturedVideo] = useState({
-    id: 'video1',
-    title: 'Commercial: Active Sportswear',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-    description: 'A dynamic commercial for a sportswear brand featuring high-energy transitions and color grading.'
-  });
+  const [projects, setProjects] = useState([]);
+  const [filter, setFilter] = useState('all');
+  const [isLoading, setIsLoading] = useState(true);
   
-  // Sample video projects - replace with your actual projects
-  const videoProjects = [
-    {
-      id: 'video1',
-      title: 'Commercial: Active Sportswear',
-      category: 'Commercial',
-      thumbnail: '/images/projects/video1.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'A dynamic commercial for a sportswear brand featuring high-energy transitions and color grading.'
-    },
-    {
-      id: 'video2',
-      title: 'Short Film: Urban Stories',
-      category: 'Film',
-      thumbnail: '/images/projects/video2.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'A narrative short film exploring city life with cinematic editing techniques.'
-    },
-    {
-      id: 'video3',
-      title: 'Corporate Video: Tech Startup',
-      category: 'Corporate',
-      thumbnail: '/images/projects/video3.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'Company overview video with clean transitions and professional tone.'
-    },
-    {
-      id: 'video4',
-      title: 'Music Video: Electronic Artist',
-      category: 'Music',
-      thumbnail: '/images/projects/video4.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'Visually striking music video with effects synchronized to the beat.'
-    },
-    {
-      id: 'video5',
-      title: 'Event Recap: Industry Conference',
-      category: 'Event',
-      thumbnail: '/images/projects/video5.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'Highlight reel showcasing key moments from a major industry event.'
-    },
-    {
-      id: 'video6',
-      title: 'Product Launch: Smart Device',
-      category: 'Commercial',
-      thumbnail: '/images/projects/video6.jpg',
-      route: '/video-editing',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with your actual video URL
-      description: 'Product launch video with detailed feature demonstrations and motion graphics.'
-    }
+  // Simulated data - in a real app, this would come from an API or CMS
+  useEffect(() => {
+    // Simulate loading delay
+    setTimeout(() => {
+      const projectData = [
+        {
+          id: 'vid1',
+          title: 'Brand Promotional Video',
+          category: 'promotional',
+          thumbnail: '/images/projects/brand-promo-thumb.jpg',
+          description: 'A 60-second promotional video showcasing brand values and products with dynamic editing and motion graphics.',
+          tags: ['Promotion', 'Motion Graphics', 'After Effects']
+        },
+        {
+          id: 'vid2',
+          title: 'Product Launch Teaser',
+          category: 'commercial',
+          thumbnail: '/images/projects/product-teaser-thumb.jpg',
+          description: 'Teaser video for new product launch with suspenseful editing and reveal sequence.',
+          tags: ['Commercial', 'Product', 'Premiere Pro']
+        },
+        {
+          id: 'vid3',
+          title: 'Event Highlight Reel',
+          category: 'event',
+          thumbnail: '/images/projects/event-highlights-thumb.jpg',
+          description: 'Highlight compilation from a three-day industry conference featuring interviews and key moments.',
+          tags: ['Event', 'Documentary', 'Multicam']
+        },
+        {
+          id: 'vid4',
+          title: 'Social Media Short',
+          category: 'social',
+          thumbnail: '/images/projects/social-media-thumb.jpg',
+          description: 'Vertical video formatted for Instagram and TikTok with fast-paced editing and text overlays.',
+          tags: ['Social Media', 'Short-Form', 'Vertical']
+        },
+        {
+          id: 'vid5',
+          title: 'Cinematic Short Film',
+          category: 'narrative',
+          thumbnail: '/images/projects/short-film-thumb.jpg',
+          description: 'A narrative short film with color grading and sound design to create emotional impact.',
+          tags: ['Narrative', 'Color Grading', 'DaVinci Resolve']
+        },
+        {
+          id: 'vid6',
+          title: 'Motion Graphics Explainer',
+          category: 'animation',
+          thumbnail: '/images/projects/motion-graphics-thumb.jpg',
+          description: 'Animated explainer video using motion graphics to communicate complex concepts.',
+          tags: ['Animation', 'Motion Graphics', 'Explainer']
+        }
+      ];
+      
+      setProjects(projectData);
+      setIsLoading(false);
+    }, 800);
+  }, []);
+  
+  const filteredProjects = filter === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === filter);
+    
+  const categories = [
+    { id: 'all', name: 'All Projects' },
+    { id: 'promotional', name: 'Promotional' },
+    { id: 'commercial', name: 'Commercial' },
+    { id: 'event', name: 'Event' },
+    { id: 'social', name: 'Social Media' },
+    { id: 'narrative', name: 'Narrative' },
+    { id: 'animation', name: 'Animation' }
   ];
 
-  // Get unique categories for filter buttons
-  const categories = ['all', ...new Set(videoProjects.map(project => project.category.toLowerCase()))];
-
-  // Filter projects based on active filter
-  const filteredProjects = activeFilter === 'all' 
-    ? videoProjects 
-    : videoProjects.filter(project => project.category.toLowerCase() === activeFilter);
-
-  // Handle clicking on a project to set it as featured
-  const handleProjectClick = (project) => {
-    setFeaturedVideo({
-      id: project.id,
-      title: project.title,
-      videoUrl: project.videoUrl,
-      description: project.description
-    });
-    
-    // Scroll to video player
-    document.getElementById('featured-video-section').scrollIntoView({ behavior: 'smooth' });
+  // Function to handle video preview (in a real app, this would open a video player)
+  const handleVideoPreview = (id) => {
+    console.log(`Opening video preview for project ${id}`);
+    // This would typically open a modal with a video player
   };
 
   return (
-    <div className="portfolio-page">
+    <motion.div 
+      className="video-editing"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="page-header">
-        <div className="container">
-          <h1>Video Editing Portfolio</h1>
-          <p>Visual storytelling through motion, color, and rhythm.</p>
-        </div>
+        <h1>Video Editing</h1>
+        <p>Creating compelling visual stories through dynamic editing, motion graphics, and color grading.</p>
       </div>
-
-      {/* Featured Video Section */}
-      <section id="featured-video-section" className="featured-video-section">
-        <div className="container">
-          <h2 className="section-title">Featured Video</h2>
-          <div className="featured-video-container">
-            <VideoPlayer 
-              videoUrl={featuredVideo.videoUrl} 
-              title={featuredVideo.title}
-            />
-            <div className="video-info">
-              <h3>{featuredVideo.title}</h3>
-              <p>{featuredVideo.description}</p>
-            </div>
-          </div>
+      
+      <div className="filter-container">
+        {categories.map(category => (
+          <button 
+            key={category.id}
+            className={`filter-btn ${filter === category.id ? 'active' : ''}`}
+            onClick={() => setFilter(category.id)}
+          >
+            {category.name}
+          </button>
+        ))}
+      </div>
+      
+      {isLoading ? (
+        <div className="loading-container">
+          <div className="loader"></div>
+          <p>Loading projects...</p>
         </div>
-      </section>
-
-      <div className="container">
-        {/* Portfolio Filters */}
-        <div className="portfolio-filters">
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
-              onClick={() => setActiveFilter(category)}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          ))}
-        </div>
-
-        {/* Portfolio Grid */}
-        <div className="portfolio-grid">
+      ) : (
+        <div className="projects-grid">
           {filteredProjects.map(project => (
-            <div key={project.id} onClick={() => handleProjectClick(project)}>
-              <ProjectCard project={project} />
+            <div className="video-project-card" key={project.id}>
+              <ProjectCard 
+                id={project.id}
+                title={project.title}
+                thumbnail={project.thumbnail}
+                description={project.description}
+                tags={project.tags}
+                category="video-editing"
+              />
+              <button 
+                className="video-preview-btn"
+                onClick={() => handleVideoPreview(project.id)}
+              >
+                <i className="fas fa-play"></i> Preview
+              </button>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Services Section */}
-      <section className="services-offered">
-        <div className="container">
-          <h2 className="section-title">Video Editing Services</h2>
-          <div className="services-list">
-            <div className="service-item">
-              <h3>Commercial Editing</h3>
-              <p>Promotional videos, advertisements, and product showcases with precise timing and engaging rhythm.</p>
-            </div>
-            <div className="service-item">
-              <h3>Motion Graphics</h3>
-              <p>Animated text, logos, and visual elements that enhance your video content and brand messaging.</p>
-            </div>
-            <div className="service-item">
-              <h3>Color Grading</h3>
-              <p>Professional color correction and stylistic grading to achieve the perfect mood and visual consistency.</p>
-            </div>
-            <div className="service-item">
-              <h3>Post-Production</h3>
-              <p>Sound design, visual effects, transitions, and final optimizations for various platforms.</p>
-            </div>
+      )}
+      
+      <div className="video-process-section">
+        <h2>My Video Editing Process</h2>
+        <div className="process-steps">
+          <div className="process-step">
+            <div className="step-number">01</div>
+            <h3>Concept Development</h3>
+            <p>Understanding the goals, audience, and message to develop a clear concept and storyboard.</p>
           </div>
-          
+          <div className="process-step">
+            <div className="step-number">02</div>
+            <h3>Raw Footage Review</h3>
+            <p>Organizing and reviewing all footage to select the best shots and identify key moments.</p>
+          </div>
+          <div className="process-step">
+            <div className="step-number">03</div>
+            <h3>Rough Cut</h3>
+            <p>Creating the initial structure and flow of the video with basic sequencing and timing.</p>
+          </div>
+          <div className="process-step">
+            <div className="step-number">04</div>
+            <h3>Fine Editing</h3>
+            <p>Refining transitions, pacing, and flow to create a cohesive and engaging narrative.</p>
+          </div>
+          <div className="process-step">
+            <div className="step-number">05</div>
+            <h3>Color Grading</h3>
+            <p>Enhancing visual mood and consistency through professional color grading techniques.</p>
+          </div>
+          <div className="process-step">
+            <div className="step-number">06</div>
+            <h3>Audio & Sound Design</h3>
+            <p>Mixing audio, adding sound effects, and ensuring professional sound quality.</p>
+          </div>
+          <div className="process-step">
+            <div className="step-number">07</div>
+            <h3>Motion Graphics</h3>
+            <p>Creating custom animations, titles, and visual effects to enhance the message.</p>
+          </div>
+          <div className="process-step">
+            <div className="step-number">08</div>
+            <h3>Final Delivery</h3>
+            <p>Exporting in optimal formats for various platforms and finalizing deliverables.</p>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+      
+      <div className="skills-section">
+        <h2>Video Editing Tools & Skills</h2>
+        <div className="skills-grid">
+          <div className="skill-card">
+            <h3>Editing Software</h3>
+            <p>Adobe Premiere Pro, Final Cut Pro, DaVinci Resolve</p>
+          </div>
+          <div className="skill-card">
+            <h3>Motion Graphics</h3>
+            <p>Adobe After Effects, Cinema 4D, Element 3D</p>
+          </div>
+          <div className="skill-card">
+            <h3>Color Grading</h3>
+            <p>DaVinci Resolve, LUTs, Color Theory</p>
+          </div>
+          <div className="skill-card">
+            <h3>Audio Editing</h3>
+            <p>Adobe Audition, Pro Tools, Sound Design</p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
