@@ -1,0 +1,70 @@
+/* VideoEditing.css - Specific styles for the video editing portfolio page */
+
+.featured-video-section {
+    padding: 2rem 0 4rem;
+    background-color: var(--secondary-color);
+  }
+  
+  .featured-video-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .video-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .video-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .video-info p {
+    color: #666;
+    line-height: 1.7;
+  }
+  
+  .portfolio-grid .project-card {
+    cursor: pointer;
+  }
+  
+  /* Video Player Overlay */
+  .project-thumbnail::before {
+    content: "▶";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 77, 90, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+  
+  .project-card:hover .project-thumbnail::before {
+    opacity: 1;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .featured-video-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .video-info {
+      margin-top: 1rem;
+    }
+  }
