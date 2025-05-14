@@ -1,0 +1,187 @@
+/* Home.css - Styling for the homepage */
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--light-text);
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation-delay: 0.2s;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation-delay: 0.4s;
+  }
+  
+  .hero-buttons {
+    animation-delay: 0.6s;
+  }
+  
+  .hero-buttons .btn {
+    margin: 0 0.5rem;
+  }
+  
+  /* Featured Projects Section */
+  .featured-projects {
+    padding: 5rem 0;
+    background-color: var(--secondary-color);
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .view-all-container {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  /* Services Section */
+  .services {
+    padding: 5rem 0;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .service-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    text-align: center;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background-color: rgba(255, 77, 90, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .graphic-icon::before {
+    content: "✏️";
+    font-size: 2rem;
+  }
+  
+  .video-icon::before {
+    content: "🎬";
+    font-size: 2rem;
+  }
+  
+  .photo-icon::before {
+    content: "📷";
+    font-size: 2rem;
+  }
+  
+  .service-card h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .service-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service-link {
+    color: var(--accent-color);
+    font-weight: 500;
+    position: relative;
+  }
+  
+  .service-link::after {
+    content: "→";
+    margin-left: 5px;
+    transition: var(--transition);
+  }
+  
+  .service-link:hover::after {
+    margin-left: 10px;
+  }
+  
+  /* Call to Action Section */
+  .cta {
+    padding: 5rem 0;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+  }
+  
+  .cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+    
+    .projects-grid,
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .cta h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-buttons .btn {
+      display: block;
+      width: 80%;
+      margin: 0.5rem auto;
+    }
+  }
