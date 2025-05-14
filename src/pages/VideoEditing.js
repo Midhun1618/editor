@@ -165,6 +165,7 @@ const VideoEditing = () => {
               <p>Sound design, visual effects, transitions, and final optimizations for various platforms.</p>
             </div>
           </div>
+          
         </div>
       </section>
     </div>
