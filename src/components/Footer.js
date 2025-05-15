@@ -30,7 +30,7 @@ const Footer = () => {
             <h4>Contact</h4>
             <p>
               <i className="icon-email"></i>
-              <a href="mailto:your.email@example.com">your.email@example.com</a>
+              <a href="mailto:midhumidhun342@gmail.com">midhumidhun342@gmail.com</a>
             </p>
             <div className="social-links">
               <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -50,7 +50,7 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; {currentYear} YourName. All Rights Reserved.</p>
+          <p>&copy; {currentYear} Midhun KP. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
