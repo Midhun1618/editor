@@ -22,7 +22,6 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     
-    // Close menu when changing routes
     setMenuOpen(false);
     
     return () => {
@@ -34,7 +33,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="logo">
-          <span className="logo-text">YourName</span>
+          <span className="logo-text">Midhun KP</span>
           <span className="logo-subtitle">Design & Video</span>
         </Link>
         
