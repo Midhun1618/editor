@@ -1,5 +1,7 @@
 import React from 'react';
 import './About.css';
+import profileimg from './profilewebpage.png';
+import profileimgB from './Bprofilewebpage.png';
 
 const About = () => {
   return (
@@ -12,7 +14,7 @@ const About = () => {
       <div className="about-content">
         <div className="about-image-container">
           <div className="about-image">
-            <img src="/api/placeholder/500/500" alt="Profile" />
+            <img src={profileimgB}  alt="Profile" />
           </div>
         </div>
 

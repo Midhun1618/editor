@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import './GraphicDesign.css';
+import sample from './thumbnailsample.jpg';
 
 const GraphicDesign = () => {
   const [projects, setProjects] = useState([]);
@@ -17,7 +18,7 @@ const GraphicDesign = () => {
           id: 'gd1',
           title: 'Brand Identity System',
           category: 'branding',
-          thumbnail: '/images/projects/brand-identity-thumb.jpg',
+          thumbnail: sample,
           description: 'Complete brand identity system including logo, color palette, typography, and usage guidelines.',
           tags: ['Branding', 'Logo Design', 'Style Guide']
         },
@@ -25,7 +26,7 @@ const GraphicDesign = () => {
           id: 'gd2',
           title: 'Marketing Campaign Visuals',
           category: 'marketing',
-          thumbnail: '/images/projects/marketing-campaign-thumb.jpg',
+          thumbnail: sample,
           description: 'Series of digital and print assets for a seasonal marketing campaign.',
           tags: ['Marketing', 'Social Media', 'Print']
         },
@@ -33,7 +34,7 @@ const GraphicDesign = () => {
           id: 'gd3',
           title: 'UI Design System',
           category: 'ui',
-          thumbnail: '/images/projects/ui-design-thumb.jpg',
+          thumbnail: sample,
           description: 'Comprehensive UI component library and design system for web applications.',
           tags: ['UI/UX', 'Design System', 'Web']
         },
@@ -41,7 +42,7 @@ const GraphicDesign = () => {
           id: 'gd4',
           title: 'Packaging Design',
           category: 'packaging',
-          thumbnail: '/images/projects/packaging-thumb.jpg',
+          thumbnail: sample,
           description: 'Product packaging design for a premium food product line.',
           tags: ['Packaging', 'Print', '3D Mockup']
         },
@@ -49,7 +50,7 @@ const GraphicDesign = () => {
           id: 'gd5',
           title: 'Editorial Layout',
           category: 'print',
-          thumbnail: '/images/projects/editorial-thumb.jpg',
+          thumbnail: sample,
           description: 'Magazine layout and editorial design for a feature article.',
           tags: ['Editorial', 'Print', 'Typography']
         },
@@ -57,7 +58,7 @@ const GraphicDesign = () => {
           id: 'gd6',
           title: 'Infographic Design',
           category: 'infographic',
-          thumbnail: '/images/projects/infographic-thumb.jpg',
+          thumbnail: sample,
           description: 'Data visualization and infographic design for complex information.',
           tags: ['Infographic', 'Data Viz', 'Information Design']
         }
