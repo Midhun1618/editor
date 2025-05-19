@@ -41,7 +41,6 @@ const About = () => {
                 <ul>
                   <li>Brand Identity</li>
                   <li>Print Design</li>
-                  <li>Digital Marketing Assets</li>
                   <li>UI/UX Design</li>
                   <li>Illustration</li>
                 </ul>
