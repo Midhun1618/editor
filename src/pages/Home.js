@@ -34,7 +34,7 @@ const Home = () => {
       <section className="hero">
         <div className="hero-content">
           <h1 className="fade-in">Bringing Ideas to Life</h1>
-          <p className="fade-in">Graphic Design | Video Editing | Photo Retouching</p>
+          <p className="fade-in">Graphic Design | Video Editing | Photo Editing</p>
           <div className="hero-buttons fade-in">
             <Link to="/contact" className="btn">Get in Touch</Link>
             <Link to="/about" className="btn btn-outline">About Me</Link>

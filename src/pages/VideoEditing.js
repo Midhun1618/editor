@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
+import event_car from './images/projects/car_event_thumbnail.png'
+import car from './images/projects/kia_thumbnail.jpg'
+import dance from './images/projects/dance_thumbnail.jpg'
+import mountain from './images/projects/mountain_thumbnail.jpg'
 import './VideoEditing.css';
 
 const VideoEditing = () => {
@@ -15,34 +19,34 @@ const VideoEditing = () => {
       const projectData = [
         {
           id: 'vid1',
-          title: 'Brand Promotional Video',
+          title: 'Cinematic Travel B-roll',
           category: 'promotional',
-          thumbnail: '/images/projects/brand-promo-thumb.jpg',
+          thumbnail: mountain,
           description: 'A 60-second promotional video showcasing brand values and products with dynamic editing and motion graphics.',
           tags: ['Promotion', 'Motion Graphics', 'After Effects']
         },
         {
           id: 'vid2',
-          title: 'Product Launch Teaser',
+          title: 'Stylish Cars Showcase',
           category: 'commercial',
-          thumbnail: '/images/projects/product-teaser-thumb.jpg',
+          thumbnail: car,
           description: 'Teaser video for new product launch with suspenseful editing and reveal sequence.',
           tags: ['Commercial', 'Product', 'Premiere Pro']
         },
         {
           id: 'vid3',
-          title: 'Event Highlight Reel',
-          category: 'event',
-          thumbnail: '/images/projects/event-highlights-thumb.jpg',
-          description: 'Highlight compilation from a three-day industry conference featuring interviews and key moments.',
-          tags: ['Event', 'Documentary', 'Multicam']
+          title: 'Dance Cover Perfomance',
+          category: 'perfomance',
+          thumbnail: dance,
+          description: 'Energetic dance cover shot with multiple angles and synced to the beat with dynamic transitions.',
+          tags: ['Dance', 'Perfomance', 'Beat Sync']
         },
         {
           id: 'vid4',
-          title: 'Social Media Short',
+          title: 'Event Highlight Reel',
           category: 'social',
-          thumbnail: '/images/projects/social-media-thumb.jpg',
-          description: 'Vertical video formatted for Instagram and TikTok with fast-paced editing and text overlays.',
+          thumbnail: event_car,
+          description: 'Vertical video formatted for Instagram with fast-paced b-roll editing.',
           tags: ['Social Media', 'Short-Form', 'Vertical']
         },
         {
