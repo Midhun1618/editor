@@ -132,7 +132,7 @@
   }
   
   .timeline-date {
-    width: 100px;
+    width: 28rem;
     padding-right: 1.5rem;
     text-align: right;
     font-weight: 600;
@@ -140,7 +140,7 @@
   }
   
   .timeline-content {
-    padding-left: 1.5rem;
+    padding-left: 4.5rem;
     position: relative;
   }
   

@@ -1,19 +1,17 @@
 import React from 'react';
 import './About.css';
 import profileimgB from './Bprofilewebpage.png';
+import { motion } from 'framer-motion';
+
 
 const About = () => {
   return (
     <div className="about-container">
-      <div className="about-header">
-        <h1>About Me</h1>
-        <div className="about-underline"></div>
-      </div>
 
       <div className="about-content">
         <div className="about-image-container">
           <div className="about-image">
-            <img src={profileimgB}  alt="Profile" />
+            <img src={profileimgB} alt="Profile" />
           </div>
         </div>
 
@@ -63,7 +61,7 @@ const About = () => {
                   <li>Adobe Premiere Pro</li>
                   <li>After Effects</li>
                   <li>Photoshop</li>
-                  <li>Figma</li>
+                  <li>Adobe Lightroom</li>
                   <li>Figma</li>
                 </ul>
               </div>
@@ -74,41 +72,68 @@ const About = () => {
             <h2>Experience</h2>
             <div className="timeline">
 
-              <div className="timeline-item">
+              <motion.div
+                className="timeline-item"
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}>
+
                 <div className="timeline-date">Dec 2024 - Jan 2025</div>
                 <div className="timeline-content">
                   <h3>Video Editing Intern</h3>
                   <p>Growfluence</p>
                   <p>Edited daily reels and YouTube videos for various clients, ensuring high-quality content tailored for digital platforms.</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="timeline-item">
+              <motion.div
+                className="timeline-item"
+                initial={{ opacity: 0, y: 70 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+
                 <div className="timeline-date">Sep 2024 - Oct 2024</div>
                 <div className="timeline-content">
                   <h3>Video Editor Intern</h3>
                   <p>Tellis Technologies</p>
                   <p>Worked on editing product showcase videos for the company’s apps presented to clients.</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="timeline-item">
+              <motion.div
+                className="timeline-item"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+
                 <div className="timeline-date">Nov 2021</div>
                 <div className="timeline-content">
                   <h3>Freelance Video Editor</h3>
                   <p>Dance Cover Project</p>
                   <p>Shot and edited a dance cover video, handling all aspects from cinematography to post-production.</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="timeline-item">
+              <motion.div
+                className="timeline-item"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+
                 <div className="timeline-date">Nov 2020</div>
                 <div className="timeline-content">
                   <h3>Short Film Editor</h3>
                   <p>AFTER-19 (COVID-Themed Short Film)</p>
                   <p>Edited and released a narrative short film reflecting the impact of the COVID-19 pandemic.</p>
                 </div>
-              </div>
+              </motion.div>
 
             </div>
           </div>
@@ -122,8 +147,8 @@ const About = () => {
           </div>
 
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

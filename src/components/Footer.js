@@ -36,21 +36,15 @@ const Footer = () => {
               <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <i className="icon-instagram"></i>
               </a>
-              <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" aria-label="Behance">
-                <i className="icon-behance"></i>
-              </a>
               <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <i className="icon-linkedin"></i>
-              </a>
-              <a href="https://vimeo.com/" target="_blank" rel="noopener noreferrer" aria-label="Vimeo">
-                <i className="icon-vimeo"></i>
               </a>
             </div>
           </div>
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Midhun KP. All Rights Reserved.</p>
+          <p>&copy; {currentYear} Midhun KP. All Rights Reserved. 2025</p>
         </div>
       </div>
     </footer>
