@@ -3,15 +3,14 @@ import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import './GraphicDesign.css';
 import sample from './thumbnailsample.jpg';
+import marketingVis from './VIS_FINAL_reedit.png';
 
 const GraphicDesign = () => {
   const [projects, setProjects] = useState([]);
   const [filter, setFilter] = useState('all');
   const [isLoading, setIsLoading] = useState(true);
   
-  // Simulated data - in a real app, this would come from an API or CMS
   useEffect(() => {
-    // Simulate loading delay
     setTimeout(() => {
       const projectData = [
         {
@@ -26,7 +25,7 @@ const GraphicDesign = () => {
           id: 'gd2',
           title: 'Marketing Campaign Visuals',
           category: 'marketing',
-          thumbnail: sample,
+          thumbnail: marketingVis,
           description: 'Series of digital and print assets for a seasonal marketing campaign.',
           tags: ['Marketing', 'Social Media', 'Print']
         },

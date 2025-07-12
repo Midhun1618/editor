@@ -86,10 +86,8 @@ const VideoEditing = () => {
     { id: 'animation', name: 'Animation' }
   ];
 
-  // Function to handle video preview (in a real app, this would open a video player)
   const handleVideoPreview = (id) => {
     console.log(`Opening video preview for project ${id}`);
-    // This would typically open a modal with a video player
   };
 
   return (
